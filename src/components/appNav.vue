@@ -25,7 +25,7 @@ export default {
     methods: {
         getArticle() {
             this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test')
-                .then((response) => { this.articles.push(response) },
+                .then((response) => { this.$store.state.articlesList.push(response) },
                     (error) => { console.log('Some error happened with the http request!') })
         }
     }
