@@ -1,14 +1,26 @@
 <template>
     <div class="article-card">
-        <div class="lead-image"></div>
+        <div class="lead-image" :style=" { backgroundImage: backgroundImageUrl } "></div>
         <div class="card-title">
-            One Thing Separates Creators From Consumers – Thrive Global
+            {{ article.title }}
         </div>
     </div>
 </template>
 
 <script>
-
+    export default {
+        props: {
+            article: {
+                type: Object,
+                default: {}
+            }
+        },
+        computed: {
+            backgroundImageUrl() {
+                return "url(" + this.article.lead_image_url + ")"
+            }
+        }
+    }
 </script>
 
 <style>
@@ -20,7 +32,6 @@
     }
     .article-card .lead-image {
         height: 270px;
-        background-image: url('https://cdn-images-1.medium.com/max/1200/1*04M_0MqyZ8VLIybkJsUxqg.jpeg');
         background-size: cover;
         background-position: center;
     }

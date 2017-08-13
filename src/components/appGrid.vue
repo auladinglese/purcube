@@ -1,12 +1,19 @@
 <template>
     <div class="grid">
-        <app-article-card></app-article-card>
+        <div v-if="articleList.length > 0">
+            <app-article-card v-for="article in articleList" :article="article"></app-article-card>
+        </div>
     </div>
 </template>
 
 <script>
     import appArticleCard from './appArticleCard.vue';
     export default {
+        computed: {
+          articleList() {
+              return this.$store.state.articlesList;
+          }
+        },
         components: {
             appArticleCard
         }
