@@ -19,13 +19,13 @@
 export default {
     data: () => {
         return {
-            articles: []
+
         }
     },
     methods: {
         getArticle() {
             this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test')
-                .then((response) => { this.$store.state.articlesList.push(response) },
+                .then((response) => { this.$store.commit('addArticle', response) },
                     (error) => { console.log('Some error happened with the http request!') })
         }
     }
