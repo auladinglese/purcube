@@ -5,7 +5,7 @@
             <div class="form">
                 <form action="">
                     <input type="text" name="urlstr" id="urlstr" placeholder="https://">
-                    <div><img src="../assets/svg/download.svg" alt=""></div>
+                    <div @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
                 </form>
             </div>
             <div class="settings">
@@ -16,7 +16,20 @@
 </template>
 
 <script>
-
+export default {
+    data: () => {
+        return {
+            articles: []
+        }
+    },
+    methods: {
+        getArticle() {
+            this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test')
+                .then((response) => { this.articles.push(response) },
+                    (error) => { console.log('Some error happened with the http request!') })
+        }
+    }
+}
 </script>
 
 <style scoped>
