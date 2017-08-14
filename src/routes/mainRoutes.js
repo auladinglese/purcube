@@ -3,5 +3,5 @@ import articleView from '../components/articleView.vue';
 
 export const routes = [
     { path: '/', component: appGrid },
-    { path: '/article', component: articleView }
+    { path: '/article/:id', component: articleView, props: true }
 ];

@@ -6,3 +6,7 @@ body {
     padding: 0;
     font-family: Avenir, sans-serif;
 }
+.article-content img {
+    width: 100%;
+    height: auto;
+}

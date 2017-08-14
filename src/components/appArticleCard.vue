@@ -1,10 +1,10 @@
 <template>
-    <div class="article-card">
+    <router-link tag="div" :to="articleLink" class="article-card">
         <div class="lead-image" :style=" { backgroundImage: backgroundImageUrl } "></div>
         <div class="card-title">
             {{ article.title }}
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -13,11 +13,15 @@
             article: {
                 type: Object,
                 default: {}
-            }
+            },
+            index: Number
         },
         computed: {
             backgroundImageUrl() {
                 return "url(" + this.article.lead_image_url + ")"
+            },
+            articleLink() {
+                return `article/${this.index}`
             }
         }
     }
@@ -29,6 +33,7 @@
         background-color: white;
         box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
         border-radius: 4px;
+        cursor: pointer;
     }
     .article-card .lead-image {
         height: 270px;
