@@ -3,13 +3,18 @@
         <nav>
             <div class="brand">Purcube</div>
             <div class="pannel">
-                <div class="form">
-                    <form>
-                        <input type="text" name="urlstr" id="urlstr" placeholder="https://">
-                    </form>
-                </div>
+                <transition name="slide">
+                    <div class="form" v-if="showForm">
+                        <form>
+                            <div><input type="text" name="urlstr" id="urlstr" placeholder="https://"></div>
+
+                                <div class="download" @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
+
+                        </form>
+                    </div>
+                </transition>
                 <div class="settings">
-                    <div @click="getArticle()" class="settings-svg"><img src="../assets/svg/add.svg" alt=""></div>
+                    <div class="settings-svg"v-bind:class="{ close: showForm }" @click="showForm = !showForm"><img src="../assets/svg/add.svg" alt=""></div>
                     <div class="settings-svg"><img src="../assets/svg/settings.svg" alt=""></div>
                 </div>
             </div>
@@ -21,7 +26,7 @@
 export default {
     data: () => {
         return {
-
+            showForm: false,
         }
     },
     methods: {
@@ -47,6 +52,9 @@ export default {
         color: white;
         font-size: 1.125em;
     }
+    form {
+        position: relative;
+    }
     .form form input[type="text"] {
         /*display: none;*/
         width: calc(100vw - 160px);
@@ -56,6 +64,13 @@ export default {
         border-radius: 4px;
         font-size: 1.0em;
         margin-right: 10px;
+    }
+    .form form .download {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: 7px;
+        right: 20px;
     }
     .pannel {
         display: flex;
@@ -69,9 +84,29 @@ export default {
     }
     .settings-svg {
         height: 20px;
+        transition: all 0.3s;
     }
     .settings img {
         height: 20px;
         width: 20px;
+    }
+    .close {
+        transform: rotate(225deg);
+    }
+    .slide-enter {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    .slide-enter-active {
+        /*transform: translateX(10px);*/
+        transition: all 0.4s;
+    }
+    .slide-leave {
+        /*transform: translateX(0px);*/
+    }
+    .slide-leave-active {
+        transform: translateY(-100px);
+        opacity: 0;
+        transition: all 0.4s;
     }
 </style>
