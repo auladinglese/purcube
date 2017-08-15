@@ -2,14 +2,16 @@
     <div>
         <nav>
             <div class="brand">Purcube</div>
-            <div class="form">
-                <form action="">
-                    <input type="text" name="urlstr" id="urlstr" placeholder="https://">
-                    <div @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
-                </form>
-            </div>
-            <div class="settings">
-                <img src="../assets/svg/settings.svg" alt="">
+            <div class="pannel">
+                <div class="form">
+                    <form>
+                        <input type="text" name="urlstr" id="urlstr" placeholder="https://">
+                    </form>
+                </div>
+                <div class="settings">
+                    <div @click="getArticle()" class="settings-svg"><img src="../assets/svg/add.svg" alt=""></div>
+                    <div class="settings-svg"><img src="../assets/svg/settings.svg" alt=""></div>
+                </div>
             </div>
         </nav>
     </div>
@@ -34,8 +36,8 @@ export default {
 
 <style scoped>
     nav {
-        height: 70px;
-        background-color: purple;
+        height: 50px;
+        background-color: #A20090;
         padding: 8px;
         display: flex;
         align-items: center;
@@ -43,31 +45,33 @@ export default {
     }
     .brand {
         color: white;
-        font-size: 2.0em;
-    }
-    form {
-        display: flex;
+        font-size: 1.125em;
     }
     .form form input[type="text"] {
-        min-width: 270px;
+        /*display: none;*/
+        width: calc(100vw - 160px);
         height: 35px;
         border: none;
         padding: 4px;
         border-radius: 4px;
         font-size: 1.0em;
+        margin-right: 10px;
     }
-    .form form div {
+    .pannel {
         display: flex;
-        justify-content: center;
         align-items: center;
     }
-    .form form img {
-        margin-left: 5px;
-        height: 25px;
-        width: 25px;
+    .settings {
+        display: flex;
+        align-items: center;
+        width: 55px;
+        justify-content: space-between;
+    }
+    .settings-svg {
+        height: 20px;
     }
     .settings img {
-        height: 40px;
-        width: 40px;
+        height: 20px;
+        width: 20px;
     }
 </style>
