@@ -6,10 +6,8 @@
                 <transition name="slide">
                     <div class="form" v-if="showForm">
                         <form>
-                            <div><input type="text" name="urlstr" id="urlstr" placeholder="https://"></div>
-
-                                <div class="download" @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
-
+                            <div><input placeholder="https://" v-model="articleUrl"></div>
+                            <div class="download" @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
                         </form>
                     </div>
                 </transition>
@@ -26,14 +24,30 @@
 export default {
     data: () => {
         return {
+            articleUrl: '',
+            requestUrl: '',
             showForm: false,
         }
     },
     methods: {
         getArticle() {
-            this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test')
+            // Test the validity of the URL
+            if (new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?").test(this.articleUrl)) {
+                // If valid strip the query parameters
+                this.requestUrl = this.articleUrl.split('?')[0];
+            } else {
+                // Temporary - Show alert here
+                alert('Please enter a valid url!');
+                return;
+            }
+            // Send the request
+            this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test', { params: { url: this.requestUrl }})
                 .then((response) => { this.$store.commit('addArticle', JSON.parse(response.bodyText)) },
-                    (error) => { console.log('Some error happened with the http request!') })
+                    (error) => { console.log('[Error]: ' + error.message) });
+
+            // Clear the form and hide it
+            this.articleUrl = '';
+            this.showForm = false;
         }
     }
 }
@@ -55,7 +69,7 @@ export default {
     form {
         position: relative;
     }
-    .form form input[type="text"] {
+    .form form input {
         /*display: none;*/
         width: calc(100vw - 160px);
         height: 35px;
