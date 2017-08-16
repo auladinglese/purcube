@@ -33,21 +33,20 @@ export default {
         getArticle() {
             // Test the validity of the URL
             if (new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?").test(this.articleUrl)) {
-                // If valid strip the query parameters
-                this.requestUrl = this.articleUrl.split('?')[0];
+
             } else {
                 // Temporary - Show alert here
                 alert('Please enter a valid url!');
                 return;
             }
-            // Send the request
-            this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test', { params: { url: this.requestUrl }})
-                .then((response) => { this.$store.commit('addArticle', JSON.parse(response.bodyText)) },
-                    (error) => { console.log('[Error]: ' + error.message) });
+            // Request send function
+            this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test', { params: { url: this.articleUrl }})
+            .then((response) => { this.$store.commit('addArticle', JSON.parse(response.bodyText)) },
+                (error) => { console.log('[Error]: ' + error.message) });
 
             // Clear the form and hide it
             this.articleUrl = '';
-            this.showForm = false;
+            this.showForm = false;        
         }
     }
 }

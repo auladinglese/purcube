@@ -1,7 +1,12 @@
 <template>
     <div class="grid">
         <div v-if="articleList.length > 0">
-            <app-article-card v-for="article, index in articleList" :article="article" :index="index"></app-article-card>
+            <app-article-card 
+            v-for="article, index in articleList" 
+            :key="article.id"
+            :article="article" 
+            :index="index">
+            </app-article-card>
         </div>
     </div>
 </template>
