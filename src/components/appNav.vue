@@ -69,7 +69,6 @@ export default {
         position: relative;
     }
     .form form input {
-        /*display: none;*/
         width: calc(100vw - 160px);
         height: 35px;
         border: none;
@@ -78,12 +77,19 @@ export default {
         font-size: 1.0em;
         margin-right: 10px;
     }
-    .form form .download {
+    .download {
+        height: 28px;
+        width: 40px;
+        position: absolute;
+        top: 4px;
+        right: 12px;
+        background-color: white;
+        padding: 4px 10px;
+        border-left: 1px solid #A20090;
+    }
+    .download img {
         height: 20px;
         width: 20px;
-        position: absolute;
-        top: 7px;
-        right: 20px;
     }
     .pannel {
         display: flex;
@@ -111,11 +117,7 @@ export default {
         opacity: 0;
     }
     .slide-enter-active {
-        /*transform: translateX(10px);*/
         transition: all 0.4s;
-    }
-    .slide-leave {
-        /*transform: translateX(0px);*/
     }
     .slide-leave-active {
         transform: translateY(-100px);
