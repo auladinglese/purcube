@@ -34,22 +34,20 @@
 </script>
 
 <style>
-    .article-card:first-child {
-        margin-top: 0;
-    }
     .article-card {
+        /* width: 400px; */
         height: 250px;
         background-color: white;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.5s;
-        margin: 20px 0;
+        margin: 0 0 20px 0;
     }
     .article-card:hover {
         box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
     }
-    .article-card .card-title-area {
+    .card-title-area {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -59,7 +57,7 @@
         border-top-right-radius: 4px;
         padding: 0 30px 0;
     }
-    .article-card .card-details {
+    .card-details {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -67,10 +65,10 @@
         height: 55px;
         font-size: 1.125em;
     }
-    .card-details .author-name {
+    .author-name {
         font-size: 0.75em;
     }
-    .card-details .read-capsule {
+    .read-capsule {
         display: flex;
         align-items: center;
         border-radius: 10px;
@@ -78,14 +76,38 @@
         height: 16px;
         width: 70px;
     }
-    .read-capsule .read-time-indicator {
+    .read-time-indicator {
         height: 8px;
         width: 8px;
         border-radius: 100%;
         background-color: #50E3C2;
         margin: 0 8px;
     }
-    .read-capsule .read-time {
+    .read-time {
         font-size: 0.625em;
     }
+    @media screen and (min-width: 550px) {
+        .article-card {
+            width: calc(50vw - 55px);
+            margin: 20px;
+        }
+    } 
+    @media screen and (min-width: 850px) {
+        .article-card, .article-card:first-child {
+            width: calc(33.3vw - 50px);
+            margin: 20px;
+        }
+    } 
+    @media screen and (min-width: 1200px) {
+        .article-card, .article-card:first-child {
+            width: calc(25vw - 47.5px);
+            margin: 20px;
+        }
+    } 
+    @media screen and (min-width: 1300px) {
+        .article-card, .article-card:first-child {
+            width: calc(325px - 47.5px);
+            margin: 20px;
+        }
+    } 
 </style>

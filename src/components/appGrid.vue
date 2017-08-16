@@ -1,6 +1,6 @@
 <template>
     <div class="grid">
-        <div v-if="articleList.length > 0">
+        <div class="grid-flex" v-if="articleList.length > 0">
             <app-article-card 
             v-for="article, index in articleList" 
             :key="article.id"
@@ -28,8 +28,20 @@
 <style>
     .grid {
         width: 100%;
-        min-height: calc(100vh - 70px);
+        min-height: calc(100vh - 50px);
         background: #F0EFEF;
         padding: 15px;
+    }
+    .grid-flex {
+        width: calc(100vw - 60px);
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    @media screen and (min-width: 550px) {
+        .grid-flex {
+            width: calc(100vw - 30px);
+        }
     }
 </style>
