@@ -7,7 +7,7 @@
             <div class="author-name">{{ article.author }}</div>
             <div class="read-capsule">
                 <div class="read-time-indicator"></div>
-                <div class="read-time"> 7 min</div>
+                <div class="read-time">{{`${Math.ceil(article.word_count / 200) } min`}}</div>
             </div>
         </div>
     </router-link>

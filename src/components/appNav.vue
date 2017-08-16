@@ -41,7 +41,7 @@ export default {
             }
             // Request send function
             this.$http.get('https://pauls-playground-abialbonpaul.c9users.io/test', { params: { url: this.articleUrl }})
-            .then((response) => { this.$store.commit('addArticle', JSON.parse(response.bodyText)) },
+            .then((response) => { this.$store.commit('addArticle', JSON.parse(response.bodyText) )},
                 (error) => { console.log('[Error]: ' + error.message) });
 
             // Clear the form and hide it
