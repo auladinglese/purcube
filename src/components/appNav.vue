@@ -6,8 +6,8 @@
                 <transition name="slide">
                     <div class="form" v-if="showForm">
                         <form>
-                            <div><input placeholder="https://" v-model="articleUrl"></div>
-                            <div class="download" @click="getArticle()"><img src="../assets/svg/download.svg" alt=""></div>
+                            <div><input placeholder="https://" v-model="articleUrl" @keyup.enter="getArticle"></div>
+                            <div class="download" @click="getArticle"><img src="../assets/svg/download.svg" alt=""></div>
                         </form>
                     </div>
                 </transition>
