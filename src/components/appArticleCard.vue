@@ -6,7 +6,7 @@
         <div class="card-details">
             <div class="author-name">{{ article.author }}</div>
             <div class="read-capsule">
-                <div class="read-time-indicator"></div>
+                <div class="read-time-indicator" :style=" { backgroundColor: readTimeColor } "></div>
                 <div class="read-time">{{`${Math.ceil(article.word_count / 200) } min`}}</div>
             </div>
         </div>
@@ -28,6 +28,16 @@
             },
             articleLink() {
                 return `article/${this.index}`
+            },
+            readTimeColor() {
+                if ((this.article.word_count / 200) <= 7) {
+                    // Green
+                    return '#50E3C2';
+                } else if ((this.article.word_count / 200) <= 15) {
+                    return '#F6A623';
+                } else {
+                    return '#D0011B';
+                }
             }
         }
     }
@@ -80,7 +90,6 @@
         height: 8px;
         width: 8px;
         border-radius: 100%;
-        background-color: #50E3C2;
         margin: 0 8px;
     }
     .read-time {
