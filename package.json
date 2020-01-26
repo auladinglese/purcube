@@ -5,7 +5,7 @@
   "author": "Abialbon Paul <dr.abialbon@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev:cert:webpack": "NODE_ENV=development webpack-dev-server --config webpack.dev.certifications.config.js",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
